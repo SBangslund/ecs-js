@@ -1,8 +1,9 @@
 {
-  "name": "@zirb/ecs-js",
-  "version": "1.0.2",
-  "description": "A framework for the data-oriented ECS architecture.",
-  "main": "index.js",
+  "name": "esc-ts",
+  "version": "1.0.0",
+  "description": "A framework implementing the ECS architecture",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,18 +13,19 @@
   },
   "keywords": [
     "ECS",
-    "Javascript",
-    "data-oriented",
-    "nodes",
-    "entities",
-    "component",
     "entity",
-    "node"
+    "node",
+    "component",
+    "typescript",
+    "javascript"
   ],
   "author": "Samuel Bangslund",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SBangslund/ecs-js/issues"
   },
-  "homepage": "https://github.com/SBangslund/ecs-js#readme"
+  "homepage": "https://github.com/SBangslund/ecs-js#readme",
+  "dependencies": {
+    "@zirb/ecs-js": "^1.0.1"
+  }
 }
