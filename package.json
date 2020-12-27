@@ -1,6 +1,6 @@
 {
-  "name": "esc-ts",
-  "version": "1.0.4",
+  "name": "ecs-ts",
+  "version": "1.0.0",
   "description": "A framework implementing the ECS architecture",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
