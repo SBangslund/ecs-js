@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/SBangslund/ecs-js/issues"
   },
-  "homepage": "https://github.com/SBangslund/ecs-js#readme",
-  "dependencies": {
-    "@zirb/ecs-js": "^1.0.1"
-  }
+  "homepage": "https://github.com/SBangslund/ecs-js#readme"
 }
