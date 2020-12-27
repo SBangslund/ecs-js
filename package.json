@@ -1,7 +1,7 @@
 {
   "name": "@zirb/ecs-js",
-  "version": "1.0.0",
-  "description": "A Javascript library for an ECS architecture",
+  "version": "1.0.1",
+  "description": "A framework for the data-oriented ECS architecture.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,11 +13,12 @@
   "keywords": [
     "ECS",
     "Javascript",
-    "JS",
-    "architecture",
+    "data-oriented",
+    "nodes",
+    "entities",
+    "component",
     "entity",
-    "node",
-    "system"
+    "node"
   ],
   "author": "Samuel Bangslund",
   "license": "ISC",
