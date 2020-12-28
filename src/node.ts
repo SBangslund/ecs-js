@@ -1,7 +1,6 @@
 import { ECSComponent } from "./component";
 import { ECSEntity } from "./entity";
 
-
 export class ECSNode {
     private _components: ECSComponent[];
     private _name: string;
