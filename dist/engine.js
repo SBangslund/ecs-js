@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sayGoodbye = exports.sayHello = void 0;
-function sayHello() {
-    console.log("Hello!");
+exports.ECSEngine = void 0;
+class ECSEngine {
+    constructor() {
+    }
 }
-exports.sayHello = sayHello;
-function sayGoodbye() {
-    console.log("Goodbye!");
+exports.ECSEngine = ECSEngine;
+class NodeSystem {
 }
-exports.sayGoodbye = sayGoodbye;

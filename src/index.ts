@@ -1,1 +1,1 @@
-export {sayHello, sayGoodbye} from './engine';
+export {ECSEngine} from './engine';

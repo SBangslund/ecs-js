@@ -1,7 +1,13 @@
-export function sayHello() {
-    console.log("Hello!");
+import { ECSWorld } from "./world";
+
+export class ECSEngine {
+
+    constructor() {
+        
+    }
 }
 
-export function sayGoodbye() {
-    console.log("Goodbye!");
+class NodeSystem {
+    private world: ECSWorld;
+    private template: Node;
 }
