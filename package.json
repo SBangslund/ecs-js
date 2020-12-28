@@ -1,5 +1,5 @@
 {
-  "name": "ecs-ts",
+  "name": "@surgostudios/ecs-ts",
   "version": "1.0.1",
   "description": "A framework implementing the ECS architecture",
   "main": "dist/index.js",
