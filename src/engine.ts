@@ -1,3 +1,4 @@
+import { ECSNode } from "./node";
 import { ECSWorld } from "./world";
 
 export class ECSEngine {
