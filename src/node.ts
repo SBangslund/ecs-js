@@ -20,6 +20,10 @@ class ECSNode {
         return this._name;
     }
 
+    public get components(): ECSComponent[] {
+        return this._components;
+    }
+
     public get(name: string): ECSComponent {
         return this._components.find(c => c.name == name);
     }

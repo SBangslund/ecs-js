@@ -11,7 +11,19 @@ class ECSEntity {
         this._components.push(component);
     }
 
+    public equals(entity: ECSEntity): boolean {
+        return this._id == entity._id;
+    }
+
     public get(name: string): ECSComponent {
         return this._components.find(c => c.name == name);
+    }
+
+    public get components(): ECSComponent[] {
+        return this._components;
+    }
+
+    public get id(): number {
+        return this._id;
     }
 }
