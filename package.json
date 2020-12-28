@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SBangslund/ecs-js.git"
+    "url": "git+https://github.com/SBangslund/ecs-ts.git"
   },
   "keywords": [
     "ECS",
@@ -22,7 +22,11 @@
   "author": "Samuel Bangslund",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SBangslund/ecs-js/issues"
+    "url": "https://github.com/SBangslund/ecs-ts/issues"
   },
-  "homepage": "https://github.com/SBangslund/ecs-js#readme"
+  "homepage": "https://github.com/SBangslund/ecs-ts#readme",
+  "dependencies": {
+    "@types/node": "^14.14.16",
+    "node-fetch": "^2.6.1"
+  }
 }

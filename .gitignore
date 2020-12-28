@@ -1,2 +1,5 @@
 # Ignore built ts files
 dist/**/*
+
+# Remove Node modules
+node_modules/*
