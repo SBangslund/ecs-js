@@ -1,14 +1,13 @@
-import { readJsonConfigFile } from "typescript";
-
 export class ECSWorld {
     private _nodeTemplates: ECSNode[];
     private _nodeMap: Map<string, ECSNode[]>;
     private _nodeEntites: Map<number, ECSNode[]>;
 
-    private nodePath: string;
+    private _nodePath: string;
 
-    constructor() {
-
+    constructor(nodePath: string) {
+        this._nodePath = nodePath;
+        this._readNodes();
     }
 
     /*private extractNodes(entity: ECSEntity): ECSNode[] {
@@ -26,7 +25,7 @@ export class ECSWorld {
     }*/
 
     private _readNodes() {
-        fetch("nodes.json")
+        fetch(this._nodePath)
             .then(response => { return response.json })
             .then(data => { this._readSuccess(data) })
             .catch(reason => console.log(reason));
