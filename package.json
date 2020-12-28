@@ -1,6 +1,6 @@
 {
   "name": "@surgostudios/ecs-ts",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A framework implementing the ECS architecture",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
