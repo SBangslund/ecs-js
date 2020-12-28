@@ -2,8 +2,6 @@ import { ECSComponent } from "./component";
 import { ECSEntity } from "./entity";
 import { ECSNode } from "./node";
 
-const fetch = require("node-fetch");
-
 /**
  * The ECS World is responsible for keeping track of the current state of the system. It stores all the nodes
  * and provides the systems with access to whichever node they need - and its associated entity and component.
