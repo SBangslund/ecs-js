@@ -1,3 +1,6 @@
+import { ECSEntity } from "./entity";
+import { ECSNode } from "./node";
+
 export class ECSWorld {
     private _nodeTemplates: ECSNode[];
     private _nodeMap: Map<string, ECSNode[]>;

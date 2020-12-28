@@ -1,2 +1,2 @@
-export {ECSEngine} from './engine';
-export {ECSWorld} from './world';
+export * from './engine';
+export * from './world';

@@ -1,5 +1,7 @@
+import { ECSComponent } from "./component";
+
 let counter: number = 0;
-class ECSEntity {
+export class ECSEntity {
     private _components: ECSComponent[] = [];
     private _id: number;
 

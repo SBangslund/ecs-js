@@ -1,4 +1,6 @@
-class ECSComponent {
+import { ECSEntity } from "./entity";
+
+export class ECSComponent {
     private _parentEntity: ECSEntity;
     private _name: string;
 
