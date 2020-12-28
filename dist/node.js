@@ -12,6 +12,9 @@ class ECSNode {
     get name() {
         return this._name;
     }
+    get components() {
+        return this._components;
+    }
     get(name) {
         return this._components.find(c => c.name == name);
     }

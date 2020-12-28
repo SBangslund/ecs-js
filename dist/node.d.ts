@@ -6,5 +6,6 @@ declare class ECSNode {
     set parentEntity(entity: ECSEntity);
     get parentEntity(): ECSEntity;
     get name(): string;
+    get components(): ECSComponent[];
     get(name: string): ECSComponent;
 }
