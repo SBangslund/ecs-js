@@ -1,0 +1,11 @@
+{
+    "nodes": [
+        {
+            "name": "TestNode",
+            "components": [
+                "Position",
+                "Render"
+            ]
+        }
+    ]
+}

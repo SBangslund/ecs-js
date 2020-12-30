@@ -2,6 +2,8 @@ import { ECSComponent } from "./component";
 import { ECSEntity } from "./entity";
 import { ECSNode } from "./node";
 
+const fs = require('fs');
+
 /**
  * The ECS World is responsible for keeping track of the current state of the system. It stores all the nodes
  * and provides the systems with access to whichever node they need - and its associated entity and component.
@@ -10,17 +12,17 @@ export class ECSWorld {
     /**
      * All the different Nodes available to be extracted from Entites.
      */
-    private _nodeTemplates: ECSNode[];
+    private _nodeTemplates: ECSNode[] = [];
 
     /**
      * All the nodes with the key being the name of the Node, and the value the corresponding list of Nodes.
      */
-    private _nodeMap: Map<string, ECSNode[]>;
+    private _nodeMap: Map<string, ECSNode[]> = new Map<string, ECSNode[]>();
 
     /**
      * Keeps track of which nodes are owned by which Entity - makes for faster deletion.
      */
-    private _nodeEntites: Map<number, ECSNode[]>;
+    private _nodeEntites: Map<number, ECSNode[]> = new Map<number, ECSNode[]>();
 
     /**
      * Defines where the World should look for the Nodes' json file.
@@ -51,6 +53,14 @@ export class ECSWorld {
             nodeList.splice(nodeList.indexOf(node), 1);
         })
         this._nodeEntites.delete(entity.id);
+    }
+
+    public get nodeTemplates(): ECSNode[] {
+        return this._nodeTemplates;
+    }
+
+    public get nodeMap(): Map<string, ECSNode[]> {
+        return this._nodeMap;
     }
 
     /**
@@ -111,25 +121,16 @@ export class ECSWorld {
      * After loading json file, the _readSuccess(data: any) is called. 
      */
     private _readNodes() {
-        fetch(this._nodePath)
-            .then(response => { return response.json() })
-            .then(data => { this._readSuccess(data) })
-            .catch(reason => console.error(reason));
-    }
-
-    /**
-     * This is called upon a successful file read from _readNodes(). It proceeds to take the json data, and convert
-     * it to in memory nodes - as templates. These are then further used for extracting nodes from Entities. 
-     * @param data Data read from a json file.
-     */
-    private _readSuccess(data: any) {
-        data.nodes.forEach(node => {
-            let components: ECSComponent[] = [];
-            node.components.forEach((name: string) => {
-                components.push(new ECSComponent(name));
+        fs.readFile(this._nodePath, (err, data) => {
+            data = JSON.parse(data);
+            if(err || typeof data == 'undefined') console.error(err);
+            data.nodes.forEach(node => {
+                let components: ECSComponent[] = [];
+                node.components.forEach((name: string) => {
+                    components.push(new ECSComponent(name));
+                });
+                this._nodeTemplates.push(new ECSNode(node.name, components));
             });
-            this._nodeTemplates.push(new ECSNode(node.name, components));
         });
-
     }
 }

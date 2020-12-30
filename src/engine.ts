@@ -1,6 +1,8 @@
 import { ECSNode } from "./node";
 import { ECSWorld } from "./world";
 
+const fs = require('fs');
+
 export class ECSEngine {
 
     private _world: ECSWorld;
@@ -66,18 +68,19 @@ export class ECSEngine {
         }
     }
 
-    private _loadJson(path: string): any {
-        let _jsonData: Promise<any>;
-        fetch(path)
-            .then(response => { return response.json() })
-            .then(data => { _jsonData = data; })
-            .catch(reason => console.error(reason));
-        return _jsonData;
+    private _loadSystems(err, data): void {
+        if(err) console.error(err);
+        this._systemData = JSON.parse(data);
+    }
+
+    private _loadPlugins(err, data): void {
+        if(err) console.error(err);
+        this._pluginData = JSON.parse(data);
     }
 
     public init(): void {
-        this._systemData = this._loadJson(this._systemPath);
-        this._pluginData = this._loadJson(this._pluginPath);
+        fs.readFile(this._systemPath, this._loadSystems);
+        fs.readFile(this._pluginPath, this._loadPlugins);
     }
 
     public start(): void {
