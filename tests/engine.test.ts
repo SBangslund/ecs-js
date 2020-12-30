@@ -1,5 +1,5 @@
-import { ECSEngine } from "../engine";
-import { ECSWorld } from "../world";
+import { ECSEngine } from "../src/engine";
+import { ECSWorld } from "../src/world";
 
 let world: ECSWorld;
 
