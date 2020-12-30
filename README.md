@@ -122,8 +122,8 @@ window.VelocitySystem = class VelocitySystem extends NodeSystem {
 
     run() {
         nodes.forEach((velocityNode: ECSNode) => {
-            let position: Position = velocityNode.getComponent("Position");
-            let velocity: Velocity = velocityNode.getComponent("Velocity");
+            let position: Position = velocityNode.get("Position");
+            let velocity: Velocity = velocityNode.get("Velocity");
 
             // logic ...
         });
