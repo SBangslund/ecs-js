@@ -81,12 +81,12 @@ export class ECSEngine {
     public init(): void {
         fs.readFile(this._systemPath, this._loadSystems);
         fs.readFile(this._pluginPath, this._loadPlugins);
+        this._initializeSystems(this._systemData);
+        this._initializePlugins(this._pluginData);
     }
 
     public start(): void {
         this._isRunning = true;
-        this._initializeSystems(this._systemData);
-        this._initializePlugins(this._pluginData);
     }
 
     public stop(): void {

@@ -1,10 +1,17 @@
 {
     "nodes": [
         {
-            "name": "TestNode",
+            "name": "TestNode1",
             "components": [
                 "Position",
                 "Render"
+            ]
+        },
+        {
+            "name": "TestNode2",
+            "components": [
+                "Position",
+                "Collision"
             ]
         }
     ]
