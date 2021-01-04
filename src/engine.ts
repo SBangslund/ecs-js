@@ -3,6 +3,27 @@ import { ECSWorld } from "./world";
 
 const fs = require('fs');
 
+/**
+ * The ECSEngine is resposible for controlling the state of the ECS {@linkplain ECSSystem}s and {@link ECSPlugin}s. While allowing
+ * the implementors to control flow of update, render and post iterations. As each system requires {@link ECSNode}s to run, an
+ * {@link ECSWorld} instance needs to be provided - as well as the location of the system and plugin JSON configurations.
+ * 
+ * @example
+ * ```ts
+ *  let engine: ECSEngine = new ECSEngine(world, 'systems.json', 'plugins.json');
+ *  
+ *  engine.init();  // loads json files
+ *  engine.start(); // enables systems
+ *  
+ *  while(engine.isRunning) {
+ *      engine.update();
+ *      engine.render();
+ *      engine.post();
+ *      // ... engine.stop() should be possible to reach within the loop
+ *  }
+ * ```
+ * @see {@link ECSWorld}
+ */
 export class ECSEngine {
 
     private _world: ECSWorld;
@@ -22,6 +43,18 @@ export class ECSEngine {
 
     private _isRunning: boolean;
 
+    /**
+     * Create and instance of the ECSEngine - no static methods.
+     * 
+     * @example
+     * ```ts
+     * let engine: ECSEngine = new ECSEngine(world, 'conf/systems.json', 'conf/nodes.json');
+     * ```
+     * 
+     * @param world The associated world for the engine to manage
+     * @param systemPath The path to the 'systems.json' configuration file
+     * @param pluginPath The path to the 'plugins.json' configuration file
+     */
     constructor(world: ECSWorld, systemPath: string, pluginPath: string) {
         this._world = world;
         this._systemPath = systemPath;
@@ -69,15 +102,18 @@ export class ECSEngine {
     }
 
     private _loadSystems(err, data): void {
-        if(err) console.error(err);
+        if (err) console.error(err);
         this._systemData = JSON.parse(data);
     }
 
     private _loadPlugins(err, data): void {
-        if(err) console.error(err);
+        if (err) console.error(err);
         this._pluginData = JSON.parse(data);
     }
 
+    /**
+     * Read and initialize the {@link ECSSystem}s and {@link ECSPlugin}s defined in the JSON configuration files.
+     */
     public init(): void {
         fs.readFile(this._systemPath, this._loadSystems);
         fs.readFile(this._pluginPath, this._loadPlugins);
@@ -85,24 +121,43 @@ export class ECSEngine {
         this._initializePlugins(this._pluginData);
     }
 
+    /**
+     * Enables {@link ECSSystem}s - sets {@link :_isRunning} to true.
+     */
     public start(): void {
         this._isRunning = true;
     }
 
+    /**
+     * Disables {@link ECSSystem}s - sets {@link :_isRunning} to false.
+     */
     public stop(): void {
         this._isRunning = false;
     }
 
+    /**
+     * Update all the {@link ECSSystem}s with the UPDATE type set.
+     */
     public update(): void {
         this._runSystems(this._updateSystems);
     }
 
+    /**
+     * Update all the {@link ECSSystem}s with the RENDER type set.
+     */
     public render(): void {
         this._runSystems(this._renderSystems);
     }
 
+    /**
+     * Update all the {@link ECSSystem}s with the POST type set.
+     */
     public post(): void {
         this._runSystems(this._postSystems);
+    }
+
+    public get isRunning() {
+        return this._isRunning;
     }
 }
 

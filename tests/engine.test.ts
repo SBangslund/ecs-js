@@ -4,15 +4,16 @@ import { ECSWorld } from "../src/world";
 let world: ECSWorld;
 let engine: ECSEngine;
 
-let sum = (a, b) => {
-    return a + b;
-}
-
 beforeAll(() => {
     world = new ECSWorld('tests/files/nodes.json');
     engine = new ECSEngine(world, 'tests/files/systems.json', 'tests/files/plugins');
 });
 
-test('Help me!', () => {
-    expect(sum(1, 2)).toBe(3);
+describe('Successfully sets up initial framework', () => {
+    test('World is created..', () => {
+        expect.any(world);
+    });
+    test('Engine is created..', () => {
+        expect.any(engine);
+    });
 });

@@ -127,7 +127,7 @@ export class ECSWorld {
             data.nodes.forEach(node => {
                 let components: ECSComponent[] = [];
                 node.components.forEach((name: string) => {
-                    components.push(new ECSComponent());
+                    components.push(new ECSComponent(name));
                 });
                 this._nodeTemplates.push(new ECSNode(node.name, components));
             });
